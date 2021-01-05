@@ -1,0 +1,1 @@
+curl -v 'http://localhost:8080/graphql' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:6100' --data-binary '{"query":"{\n  hello\n  world\n}"}' --compressed
