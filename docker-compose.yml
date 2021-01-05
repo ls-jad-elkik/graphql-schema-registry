@@ -22,10 +22,10 @@ services:
           - 'gql-schema-registry-db'
 
   gql-schema-registry:
-    build: .
-    command:
-      node_modules/nodemon/bin/nodemon.js --watch schema-registry.js --watch app
-      --inspect=0.0.0.0:5850 schema-registry.js
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: release
     ports:
       - 6001:3000
       - 6002:5850
@@ -36,8 +36,6 @@ services:
       - SERVICE_NAME=schema-registry
       - SERVICE_3000_NAME=schema-registry
       - DB_SCHEMA_REGISTRY=gql-schema-registry-db
-    volumes:
-      - .:/app/
     restart: always
     depends_on:
       - gql-schema-registry-redis
